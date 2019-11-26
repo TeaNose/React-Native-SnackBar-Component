@@ -62,9 +62,13 @@ class SnackbarComponent extends Component {
             this.setState({ hideDistance: event.nativeEvent.layout.height });
           }}
         >
-          <Text style={[styles.text_msg, { color: this.props.messageColor }]}>
-            {this.props.textMessage}
-          </Text>
+          {
+            this.props.textComponent ? 
+                this.props.textComponent :
+                <Text style={[styles.text_msg, { color: this.props.messageColor }]}>
+                  {this.props.textMessage}
+                </Text>
+          }
           {this.props.actionHandler && !!this.props.actionText && (
             <Touchable
               onPress={() => {
